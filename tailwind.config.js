@@ -24,9 +24,22 @@ module.exports = {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          500: '#624CF5',
+          50: '#F6F8FD',
+          DEFAULT: '#624CF5',
           foreground: 'hsl(var(--primary-foreground))',
         },
+        coral: {
+          500: '#15BF59',
+        },
+        grey: {
+          600: '#545454',
+          500: '#757575',
+          400: '#AFAFAF',
+          50: '#F6F6F6',
+        },
+        black: '#000000',
+        white: '#FFFFFF',
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
@@ -56,6 +69,13 @@ module.exports = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        poppins: ['var(--font-poppins)'],
+      },
+      backgroundImage: {
+        'dotted-pattern': "url('/assets/images/dotted-pattern.png')",
+        'hero-img': "url('/assets/images/hero.png')",
       },
       keyframes: {
         'accordion-down': {
