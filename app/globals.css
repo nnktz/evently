@@ -82,4 +82,20 @@
   .flex-center {
     @apply flex items-center justify-center;
   }
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  /* font 16 */
+  .p-bold-16 {
+    @apply text-[16px] font-bold leading-[24px];
+  }
+
+  .p-medium-16 {
+    @apply text-[16px] font-medium leading-[24px];
+  }
+
+  .p-regular-16 {
+    @apply text-[16px] font-normal leading-[24px];
+  }
 }
