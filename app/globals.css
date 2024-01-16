@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -86,16 +97,78 @@
     @apply flex items-center justify-between;
   }
 
+  /* font 64 */
+  .h1-bold {
+    @apply text-[40px] font-bold leading-[48px] lg:text-[48px] lg:leading-[60px]  xl:text-[58px] xl:leading-[74px];
+  }
+
+  /* font 40 */
+  .h2-bold {
+    @apply text-[32px] font-bold leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
+  }
+
+  /* font 24 */
+  .p-bold-24 {
+    @apply text-[24px] font-bold leading-[36px];
+  }
+  .p-medium-24 {
+    @apply text-[24px] font-medium leading-[36px];
+  }
+  .p-regular-24 {
+    @apply text-[24px] font-normal leading-[36px];
+  }
+
+  /* font 20 */
+  .p-bold-20 {
+    @apply text-[20px] font-bold leading-[30px] tracking-[2%];
+  }
+
+  .p-semibold-20 {
+    @apply text-[20px] font-semibold leading-[30px] tracking-[2%];
+  }
+  .p-medium-20 {
+    @apply text-[20px] font-medium leading-[30px];
+  }
+  .p-regular-20 {
+    @apply text-[20px] font-normal leading-[30px] tracking-[2%];
+  }
+
   /* font 16 */
   .p-bold-16 {
     @apply text-[16px] font-bold leading-[24px];
   }
-
   .p-medium-16 {
     @apply text-[16px] font-medium leading-[24px];
   }
-
   .p-regular-16 {
     @apply text-[16px] font-normal leading-[24px];
   }
+
+  /*  */
+  .button {
+    @apply p-regular-16 h-[54px] rounded-full;
+  }
+}
+
+/* =============== CLERK STYLES =============== */
+.cl-logoImage {
+  height: 38px;
+}
+
+.cl-userButtonBox {
+  flex-direction: row-reverse;
+}
+
+.cl-userButtonOuterIdentifier {
+  font-size: 16px;
+}
+
+.cl-userButtonPopoverCard {
+  right: 4px !important;
+}
+
+.cl-formButtonPrimary:hover,
+.cl-formButtonPrimary:focus,
+.cl-formButtonPrimary:active {
+  background-color: #705cf7;
 }
