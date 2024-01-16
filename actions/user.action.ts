@@ -6,6 +6,8 @@ import User from '@/lib/database/models/user.model'
 import { connectToDatabase } from '@/lib/database'
 import { handleError } from '@/lib/utils'
 import { CreateUserParams, UpdateUserParams } from '@/types'
+import Event from '@/lib/database/models/event.model'
+import Order from '@/lib/database/models/order.model'
 
 export const getUserById = async (userId: string) => {
   try {
@@ -61,7 +63,35 @@ export const deleteUser = async (clerkId: string) => {
       throw new Error('User not found')
     }
 
-    // TODO: unlink relationships
+    await Promise.all([
+      // Update the 'events' collection to remove references to the user
+      Event.updateMany(
+        {
+          _id: {
+            $in: userToDelete.events,
+          },
+        },
+        {
+          $pull: {
+            organizer: userToDelete._id,
+          },
+        },
+      ),
+
+      // Update the 'orders' collection to remove references to the user
+      Order.updateMany(
+        {
+          _id: {
+            $in: userToDelete.orders,
+          },
+        },
+        {
+          $unset: {
+            buyer: 1,
+          },
+        },
+      ),
+    ])
 
     const deletedUser = await User.findByIdAndDelete(userToDelete._id)
 

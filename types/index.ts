@@ -62,6 +62,13 @@ export type GetEventsByUserParams = {
   page: number
 }
 
+export type GetAllEventsParams = {
+  query: string
+  category: string
+  limit: number
+  page: number
+}
+
 // Category
 export type CreateCategoryParams = {
   categoryName: string
