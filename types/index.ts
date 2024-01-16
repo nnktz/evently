@@ -1,3 +1,4 @@
+// User
 export type CreateUserParams = {
   clerkId: string
   firstName: string
@@ -14,6 +15,7 @@ export type UpdateUserParams = {
   photo: string
 }
 
+// Event
 export type CreateEventParams = {
   userId: string
   event: {
@@ -58,4 +60,9 @@ export type GetEventsByUserParams = {
   userId: string
   limit?: number
   page: number
+}
+
+// Category
+export type CreateCategoryParams = {
+  categoryName: string
 }
