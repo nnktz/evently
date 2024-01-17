@@ -69,6 +69,35 @@ export type GetAllEventsParams = {
   page: number
 }
 
+export type GetRelatedEventsByCategoryParams = {
+  categoryId: string
+  eventId: string
+  limit?: number
+  page: number | string
+}
+
+export type Event = {
+  _id: string
+  title: string
+  description: string
+  price: string
+  isFree: boolean
+  imageUrl: string
+  location: string
+  startDateTime: Date
+  endDateTime: Date
+  url: string
+  organizer: {
+    _id: string
+    firstName: string
+    lastName: string
+  }
+  category: {
+    _id: string
+    name: string
+  }
+}
+
 // Category
 export type CreateCategoryParams = {
   categoryName: string
@@ -100,4 +129,10 @@ export type GetOrdersByUserParams = {
   userId: string | null
   limit?: number
   page: string | number | null
+}
+
+// Url query params
+export type SearchParamProps = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }

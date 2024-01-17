@@ -138,7 +138,6 @@ body {
   .p-bold-20 {
     @apply text-[20px] font-bold leading-[30px] tracking-[2%];
   }
-
   .p-semibold-20 {
     @apply text-[20px] font-semibold leading-[30px] tracking-[2%];
   }
@@ -147,6 +146,17 @@ body {
   }
   .p-regular-20 {
     @apply text-[20px] font-normal leading-[30px] tracking-[2%];
+  }
+
+  /* font 18 */
+  .p-semibold-18 {
+    @apply text-[18px] font-semibold leading-[28px] tracking-[2%];
+  }
+  .p-medium-18 {
+    @apply text-[18px] font-medium leading-[28px];
+  }
+  .p-regular-18 {
+    @apply text-[18px] font-normal leading-[28px] tracking-[2%];
   }
 
   /* font 16 */
