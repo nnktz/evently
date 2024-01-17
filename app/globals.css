@@ -123,6 +123,11 @@ body {
     @apply text-[28px] font-medium leading-[36px] md:text-[36px] md:leading-[44px];
   }
 
+  /* font 28 */
+  .h5-bold {
+    @apply text-[28px] font-bold leading-[36px];
+  }
+
   /* font 24 */
   .p-bold-24 {
     @apply text-[24px] font-bold leading-[36px];

@@ -6,6 +6,7 @@ import { SearchParamProps } from '@/types'
 import { formatDateTime } from '@/lib/utils'
 
 import { CheckoutButton } from '@/components/shared/checkout-button'
+import { Collection } from '@/components/shared/collection'
 
 const EventIdPage = async ({ params: { id }, searchParams }: SearchParamProps) => {
   const event: IEvent = await getEventById(id)
@@ -82,7 +83,15 @@ const EventIdPage = async ({ params: { id }, searchParams }: SearchParamProps) =
 
       <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">Related Events</h2>
-        {/* TODO: collection */}
+        <Collection
+          data={relatedEvents?.data}
+          emptyTitle="No Events Found"
+          emptyStateSubText="Come back later"
+          collectionType="All_Events"
+          limit={3}
+          page={searchParams.page as string}
+          totalPages={relatedEvents?.totalPages}
+        />
       </section>
     </>
   )
