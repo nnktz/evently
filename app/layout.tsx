@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 
+import { Toaster } from '@/components/ui/sonner'
+
 import './globals.css'
 
 const font = Poppins({
@@ -22,7 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={font.variable}>{children}</body>
+        <body className={font.variable}>
+          <Toaster />
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   )

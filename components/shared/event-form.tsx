@@ -6,10 +6,14 @@ import DatePicker from 'react-datepicker'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 import { eventDefaultValues } from '@/constants'
 import { eventFormSchema } from '@/schemas'
 import { useUploadThing } from '@/lib/uploadthing'
+import { IEvent } from '@/lib/database/models/event.model'
+import { createEvent, updateEvent } from '@/actions/event.action'
 
 import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
@@ -19,15 +23,28 @@ import { FileUploader } from './file-uploader'
 import { Checkbox } from '../ui/checkbox'
 import { Button } from '../ui/button'
 
+import 'react-datepicker/dist/react-datepicker.css'
+
 interface EventFormProps {
   userId: string
   type: 'Create' | 'Update'
+  event?: IEvent
+  eventId?: string
 }
 
-export const EventForm = ({ userId, type }: EventFormProps) => {
+export const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
+  const router = useRouter()
+
   const [files, setFiles] = useState<File[]>([])
 
-  const initialValues = eventDefaultValues
+  const initialValues =
+    event && type === 'Update'
+      ? {
+          ...event,
+          startDateTime: new Date(event.startDateTime),
+          endDateTime: new Date(event.endDateTime),
+        }
+      : eventDefaultValues
 
   const { startUpload } = useUploadThing('imageUploader')
 
@@ -47,6 +64,45 @@ export const EventForm = ({ userId, type }: EventFormProps) => {
       }
 
       uploadedImageUrl = uploadedImages[0].url
+    }
+
+    if (type === 'Create') {
+      try {
+        const newEvent = await createEvent({
+          event: { ...values, imageUrl: uploadedImageUrl },
+          userId,
+          path: '/profile',
+        })
+
+        if (newEvent) {
+          form.reset()
+          router.push(`/events/${newEvent._id}`)
+        }
+      } catch (error) {
+        toast.error('Something went wrong!')
+      }
+    }
+
+    if (type === 'Update') {
+      if (!eventId) {
+        router.back()
+        return
+      }
+
+      try {
+        const updatedEvent = await updateEvent({
+          event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
+          userId,
+          path: `/events/${eventId}`,
+        })
+
+        if (updatedEvent) {
+          form.reset()
+          router.push(`/events/${updatedEvent._id}`)
+        }
+      } catch (error) {
+        toast.error('Something went wrong!')
+      }
     }
   }
 
