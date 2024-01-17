@@ -13,6 +13,11 @@ body {
   font-family: var(--font-poppins);
 }
 
+.filter-grey {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(0%) saturate(217%) hue-rotate(32deg)
+    brightness(98%) contrast(92%);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -106,6 +111,17 @@ body {
   .h2-bold {
     @apply text-[32px] font-bold leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
   }
+  .h2-medium {
+    @apply text-[32px] font-medium leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px];
+  }
+
+  /* font 36 */
+  .h3-bold {
+    @apply text-[28px] font-bold leading-[36px] md:text-[36px] md:leading-[44px];
+  }
+  .h3-medium {
+    @apply text-[28px] font-medium leading-[36px] md:text-[36px] md:leading-[44px];
+  }
 
   /* font 24 */
   .p-bold-24 {
@@ -144,9 +160,37 @@ body {
     @apply text-[16px] font-normal leading-[24px];
   }
 
+  /* font 14 */
+  .p-semibold-14 {
+    @apply text-[14px] font-semibold leading-[20px];
+  }
+  .p-medium-14 {
+    @apply text-[14px] font-medium leading-[20px];
+  }
+  .p-regular-14 {
+    @apply text-[14px] font-normal leading-[20px];
+  }
+
+  /* font 12 */
+  .p-medium-12 {
+    @apply text-[12px] font-medium leading-[20px];
+  }
+
   /*  */
   .button {
     @apply p-regular-16 h-[54px] rounded-full;
+  }
+  .input-field {
+    @apply p-regular-16 h-[54px] rounded-full border-none bg-grey-50 px-4 py-3 placeholder:text-grey-500 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
+  .select-field {
+    @apply p-regular-16 h-[54px] w-full rounded-full border-none bg-grey-50 px-5 py-3 placeholder:text-grey-500 focus:ring-transparent focus-visible:ring-transparent !important;
+  }
+  .select-item {
+    @apply cursor-pointer py-3 focus:bg-primary-50;
+  }
+  .textarea {
+    @apply p-regular-16 flex flex-1 border-none bg-grey-50 px-5 py-3 placeholder:text-grey-500 focus-visible:ring-transparent !important;
   }
 }
 
@@ -171,4 +215,26 @@ body {
 .cl-formButtonPrimary:focus,
 .cl-formButtonPrimary:active {
   background-color: #705cf7;
+}
+
+/* =============== REACT-DATEPICKER STYLES =============== */
+.datePicker {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+  margin-left: 16px;
+}
+
+.react-datepicker__day--selected {
+  background-color: #624cf5 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #624cf5 !important;
 }

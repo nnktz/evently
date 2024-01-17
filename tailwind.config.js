@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+import { withUt } from 'uploadthing/tw'
+
+module.exports = withUt({
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -94,4 +96,4 @@ module.exports = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-}
+})
