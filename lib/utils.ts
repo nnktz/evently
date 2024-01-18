@@ -43,3 +43,14 @@ export const formatDateTime = (dateString: Date) => {
 
   return { dateTime: formattedDateTime, dateOnly: formattedDate, timeOnly: formattedTime }
 }
+
+export const formatPrice = (price: string) => {
+  const amount = parseFloat(price)
+
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(amount)
+
+  return formattedPrice
+}
