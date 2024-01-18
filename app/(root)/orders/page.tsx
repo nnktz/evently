@@ -1,4 +1,5 @@
 import { getOrdersByEvent } from '@/actions/order.action'
+import { Search } from '@/components/shared/search'
 import { IOrderItem } from '@/lib/database/models/order.model'
 import { formatDateTime, formatPrice } from '@/lib/utils'
 import { SearchParamProps } from '@/types'
@@ -15,7 +16,9 @@ const OrdersPage = async ({ searchParams }: SearchParamProps) => {
         <h3 className="wrapper h3-bold text-center sm:text-left">Orders</h3>
       </section>
 
-      <section className="wrapper mt-8">{/* TODO: search */}</section>
+      <section className="wrapper mt-8">
+        <Search placeholder="Search buyer name..." />
+      </section>
 
       <section className="wrapper overflow-x-auto">
         <table className="w-full border-collapse border-t">

@@ -6,6 +6,7 @@ import { getAllEvents } from '@/actions/event.action'
 
 import { Button } from '@/components/ui/button'
 import { Collection } from '@/components/shared/collection'
+import { Search } from '@/components/shared/search'
 
 const HomePage = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1
@@ -55,7 +56,8 @@ const HomePage = async ({ searchParams }: SearchParamProps) => {
         </h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
-          {/* TODO: search & category filter */}
+          <Search />
+          {/* TODO:  category filter */}
         </div>
 
         <Collection
